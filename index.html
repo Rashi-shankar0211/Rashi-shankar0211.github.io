@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
     <style>
         :root {
             --primary: #6366f1;
@@ -1504,7 +1505,7 @@
                         <i data-feather="arrow-right"></i>
                         View My Work
                     </a>
-                    <a href="#" class="btn btn-secondary" onclick="alert('Resume download would be triggered here')">
+                    <a href="javascript:downloadResume()" class="btn btn-secondary">
                         <i data-feather="download"></i>
                         Download Resume
                     </a>
@@ -2047,15 +2048,19 @@
                 <form class="contact-form fade-in" id="contactForm">
                     <div class="form-group">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-input" placeholder="Your name" required>
+                        <input type="text" class="form-input" name="user_name" placeholder="Your name" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-input" placeholder="your@email.com" required>
+                        <input type="email" class="form-input" name="user_email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-input" name="subject" placeholder="Job opportunity, collaboration, etc." required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Message</label>
-                        <textarea class="form-textarea" placeholder="Tell me about the opportunity..." required></textarea>
+                        <textarea class="form-textarea" name="message" placeholder="Tell me about the opportunity..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">
                         <i data-feather="send"></i>
@@ -2162,11 +2167,159 @@
             ease: 'power3.out'
         });
 
-        // Contact form handling
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init('SERVICE_KEY_PLACEHOLDER'); // We'll update this with actual key
+        })();
+
+        // Resume download function
+        function downloadResume() {
+            const resumeData = `
+RASHI SHANKAR
+DevOps & Automation Engineer | Platform Engineering | AI-Driven Systems
+Email: rashi.shankar0211@gmail.com | Phone: +91 9468445300
+LinkedIn: linkedin.com/in/rashi-shankar | GitHub: github.com/Rashi-shankar0211
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROFESSIONAL SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DevOps and Automation Engineer with 3+ years of progressive experience at Ericsson India Global Services. 
+Expertise in designing and implementing CI/CD pipelines, building AI-enabled automation systems, and architecting 
+scalable cloud infrastructure on AWS. Proven track record of reducing deployment times by 80% and automating 
+complex workflows that improve operational efficiency.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROFESSIONAL EXPERIENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AUTOMATION ENGINEER
+Ericsson India Global Services | Noida, India | Jan 2024 – Present
+
+• Developing Basirah POC with Kotlin Android Agent & FastAPI Backend for AI-driven network quality assurance
+• Building Human Behavior Simulator to bypass bot detection systems using Gaussian and Exponential distributions
+• Integrating GPT-4o-mini for telecom-grade verdict generation with 99.2% accuracy
+• Architecting 3-tier platform: Mobile Agent → FastAPI Orchestration → React Dashboard
+• Processing 1000+ network tests daily with real device simulation
+
+DEVOPS ENGINEER
+Ericsson India Global Services | Noida, India | Jul 2022 – Jan 2024
+
+• Achieved 80% reduction in deployment time for Java applications through CI/CD pipeline automation
+• Implemented Jenkins, Bamboo, and Bitbucket CI/CD pipelines with SonarQube integration
+• Automated BMC and JIRA workflows, reducing manual operations by 70%
+• Managed AWS infrastructure including EC2, S3, CloudFormation, and IAM policies
+• Led Kubernetes cluster setup and maintenance across multiple environments
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TECHNICAL SKILLS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DevOps & CI/CD: Bamboo, Bitbucket, Jenkins, Docker, Kubernetes, SonarQube, Nexus
+Cloud & Infrastructure: AWS (EC2, S3, SES, IAM), CloudFormation, Terraform, Linux
+Automation & AI: Python, FastAPI, Django, GPT-4o-mini, SemanticKernel, LLM Integration
+Mobile & Backend: Kotlin, Android SDK, REST APIs, Real Device Testing, Gradle
+Databases: SQL Server, PostgreSQL, SQLite, Room Database
+Frontend & Visualization: React, ReactFlow, Tailwind CSS, TypeScript
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FEATURED PROJECT: BASIRAH
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AI-Powered Network Quality Assurance Platform for Mobily (Saudi Arabia)
+
+An intelligent platform combining mobile device simulation, advanced workflow automation, and AI-driven 
+verdict analysis to ensure reliable network performance monitoring across telecom infrastructure.
+
+Architecture:
+• Tier 1: Mobile Agent (Kotlin Android SDK) - Real device behavior simulation
+• Tier 2: Orchestration Engine (FastAPI/Python) - Workflow management & data processing
+• Tier 3: Dashboard (React/ReactFlow) - Interactive flow visualization
+
+Key Features:
+• Human Behavior Simulator: 99.8% bot detection bypass rate
+• AI-Driven Verdict Generation: GPT-4o-mini integration with 99.2% accuracy
+• High-Capacity Processing: 1000+ network tests per day
+
+Tech Stack: Python, FastAPI, Kotlin, React, ReactFlow, GPT-4o-mini, SemanticKernel, PostgreSQL, AWS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EDUCATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+B.Tech in Electronics & Communication Engineering
+Banasthali Vidyapith, Rajasthan | 2018 - 2022
+CGPA: 8.45/10
+
+Relevant Coursework: Network Programming, System Design, Database Management, Cloud Computing, Software Engineering
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ADDITIONAL INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Open to Platform Engineering, SRE, Cloud Architecture, and AI-Driven Automation roles
+• Proficient in Linux system administration and cloud infrastructure management
+• Strong problem-solving skills with focus on scalability and automation
+• Experience with enterprise-scale systems at Ericsson
+
+Generated on: March 19, 2026
+Portfolio: https://Rashi-shankar0211.github.io
+            `;
+            
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(resumeData));
+            element.setAttribute('download', 'Rashi_Shankar_Resume.txt');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        // Contact form handling with EmailJS
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            e.target.reset();
+            
+            // Get form data
+            const formData = {
+                user_name: this.querySelector('input[name="user_name"]').value,
+                user_email: this.querySelector('input[name="user_email"]').value,
+                subject: this.querySelector('input[name="subject"]').value,
+                message: this.querySelector('textarea[name="message"]').value,
+            };
+
+            // For now, log to console and show confirmation
+            // In production, replace SERVICE_KEY with actual EmailJS service key
+            console.log('Contact Form Submission:', formData);
+            
+            // Show success message
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i data-feather="check"></i> Message Sent!';
+            submitBtn.disabled = true;
+            feather.replace();
+            
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                feather.replace();
+            }, 2000);
+
+            // Log to browser console for verification
+            alert('Thank you for reaching out!\n\nYour message:\n' + 
+                  'Name: ' + formData.user_name + '\n' +
+                  'Email: ' + formData.user_email + '\n' +
+                  'Subject: ' + formData.subject + '\n' +
+                  'Message: ' + formData.message + '\n\n' +
+                  'For emails to be automatically sent to rashi.shankar0211@gmail.com, ' +
+                  'EmailJS service key needs to be configured.');
         });
 
         // Smooth scroll for navigation links
